@@ -1,4 +1,24 @@
-<!doctype html>
+<?php  
+  if (isset($_POST['submit'])) {
+    $First = $_POST['First'];
+    $Last = $_POST['Last'];
+    $Email = $_POST['Email'];
+    $Phone = $_POST['Phone'];
+
+    $path = 'data.txt';
+
+    $fwrite = fopen($path, 'a') or die("Can't open file!");
+    fwrite($fwrite, $First." *  ".$Last." * ".$Email." * ".$Phone."\n");
+
+
+    echo "<script>alert('Đăng ký thành công!');</script>";
+    
+
+    fclose($fwrite);
+  }
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     
@@ -354,36 +374,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
            <div class="row">
                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <form>
+                  <form action="" method="POST" name="register"  enctype='multipart/form-data'>
                    <div class="row"> 
                        <div class="col-xs-12 col-sm-12"> 
                         <div class="form-group">
-                           <input type="text" class="form-control" placeholder="First Name"  required/>
+                           <input type="text" class="form-control" placeholder="First Name" name="First" id="First" required/>
                            <span><i class="fa fa-user"></i></span>
                        </div>
                    </div>
 
                    <div class="col-xs-12 col-sm-12"> 
                     <div class="form-group">
-                       <input type="text" class="form-control" placeholder="Last Name"  required/>
+                       <input type="text" class="form-control" placeholder="Last Name" name="Last" id="Last" required/>
                        <span><i class="fa fa-user"></i></span>
                    </div>
                </div>
            </div>
 
            <div class="form-group">
-               <input type="email" class="form-control" placeholder="Email"  required/>
+               <input type="email" class="form-control" placeholder="Email" name="Email" id="Email" required/>
+               <span><i class="fa fa-envelope"></i></span>
+           </div>
+           <div class="form-group">
+               <input type="number" class="form-control" placeholder="Phone" name="Phone" id="Phone" required/>
                <span><i class="fa fa-envelope"></i></span>
            </div>
 
-           
+          
 
-           <div class="form-group">
-            <textarea class="form-control" rows="7" placeholder="Your Message"></textarea>
-            <span><i class="fa fa-pencil"></i></span>
-        </div>
-
-        <button class="btn btn-orange btn-block" onclick="alert('Cảm ơn bạn đã đăng kí');">Send</button>
+        <button type="submit" name="submit" class="btn btn-orange btn-block ">Send</button>
     </form>
 </div><!-- end columns -->
 </div><!-- end row -->
