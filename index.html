@@ -1,23 +1,4 @@
-<?php  
-  if (isset($_POST['submit'])) {
-    $First = $_POST['First'];
-    $Last = $_POST['Last'];
-    $Email = $_POST['Email'];
-    $Phone = $_POST['Phone'];
 
-    $path = 'data.txt';
-
-    $fwrite = fopen($path, 'a') or die("Can't open file!");
-    fwrite($fwrite, $First." *  ".$Last." * ".$Email." * ".$Phone."\n");
-
-
-    echo "<script>alert('Đăng ký thành công!');</script>";
-    
-
-    fclose($fwrite);
-  }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
